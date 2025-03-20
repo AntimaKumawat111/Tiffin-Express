@@ -1,6 +1,14 @@
-import React from "react";
-import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
-import { FontAwesome5 } from "@expo/vector-icons";
+import React, { useState } from "react";
+import {
+  Image,
+  Modal,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import { FontAwesome5, Ionicons, MaterialIcons } from "@expo/vector-icons";
 
 interface CardDataProps {
   url: string;
@@ -25,16 +33,17 @@ const cardData: CardDataProps[] = [
 ];
 
 function HomeScreen() {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
   return (
     <View style={{ flex: 1 }}>
-      {/* Ensure full screen usage */}
       <ScrollView
         style={styles.main}
         contentContainerStyle={styles.scrollViewContent}
       >
         <View style={styles.HomePage}>
           <Text style={styles.title}>Tiffin Express</Text>
-          <View style={styles.icon}>
+          <View style={styles.personiconContainer}>
             <FontAwesome5 name="user-alt" size={24} color="white" />
           </View>
         </View>
@@ -46,9 +55,41 @@ function HomeScreen() {
         </View>
       </ScrollView>
       {/* Fixed Plus Button */}
-      <View style={styles.plusIconContainer}>
+      <TouchableOpacity
+        style={styles.plusIconContainer}
+        onPress={() => setIsModalVisible(true)}
+      >
         <FontAwesome5 name="plus" size={35} color="black" />
-      </View>
+      </TouchableOpacity>
+      {/* modal */}
+      <Modal
+        transparent={true}
+        visible={isModalVisible}
+        animationType="fade"
+        onRequestClose={() => setIsModalVisible(false)}
+      >
+        <TouchableOpacity
+          style={styles.modalBackground}
+          activeOpacity={1}
+          onPress={() => setIsModalVisible(false)}
+        >
+          <View style={styles.modalContent}>
+            <TouchableOpacity
+              style={styles.modalButton}
+              onPress={() => setIsModalVisible(false)}
+            >
+              <View style={styles.modalButtonItem}>
+                <MaterialIcons name="dinner-dining" color="#FFD600" size={24} />
+                <Text style={styles.modalButtonText}>Add Order</Text>
+              </View>
+              <View style={styles.modalButtonItem}>
+                <Ionicons name="call" color="#FFD600" size={24} />
+                <Text style={styles.modalButtonText}>Call Us</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+        </TouchableOpacity>
+      </Modal>
     </View>
   );
 }
@@ -68,7 +109,7 @@ export function Card({ url, title, description, price }: CardDataProps) {
       {/* Order Button & Price */}
       <View style={styles.cardPriceBtn}>
         <Text style={styles.OrderNowText}>Order Now</Text>
-        <Text style={styles.cardPrice}>₹{price}</Text>
+        <Text style={styles.cardPrice}>₹ {price}</Text>
       </View>
     </View>
   );
@@ -79,23 +120,23 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     minHeight: "100%",
   },
+
   scrollViewContent: {
-    flexGrow: 1,
-    // paddingBottom: 20, // Ensure enough space at the bottom for scrolling
+    // flexGrow: 1,
+    paddingBottom: 30,
   },
 
   HomePage: {
-    flexGrow: 1,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
   },
-  icon: {
-    borderWidth: 1,
-    borderColor: "black",
-    paddingVertical: 5,
-    paddingHorizontal: 8,
+
+  personiconContainer: {
+    padding: 8,
     backgroundColor: "black",
+    justifyContent: "center",
+    alignItems: "center",
   },
   title: {
     fontSize: 30,
@@ -114,11 +155,9 @@ const styles = StyleSheet.create({
     borderBottomColor: "#929AAB",
   },
   cardImage: {
-    borderWidth: 1,
-    borderBottomColor: "#929AAB",
-    width: "auto", // Fixed width
+    width: "auto",
     height: 245, // Fixed height
-    resizeMode: "cover", // Adjust to fit the container
+    resizeMode: "cover",
   },
 
   headingContainer: {
@@ -153,17 +192,51 @@ const styles = StyleSheet.create({
     fontWeight: 700,
   },
   plusIconContainer: {
-    elevation: 5,
+    elevation: 7,
     padding: 10,
-    borderRadius: 40,
-    width: 80,
-    height: 80,
+    borderRadius: 35,
+    width: 70,
+    height: 70,
     backgroundColor: "white",
     justifyContent: "center",
     alignItems: "center",
     alignSelf: "flex-end",
-    // position: "sticky",
-    bottom: 90,
+    bottom: 145,
+    position: "sticky",
+  },
+  /* Modal Styles */
+  modalBackground: {
+    flex: 1,
+    backgroundColor: "rgba(0,0,0,0.5)",
+    justifyContent: "flex-end",
+    alignItems: "flex-end",
+  },
+  modalContent: {
+    width: 200,
+    padding: 12,
+    backgroundColor: "white",
+    position: "absolute",
+    bottom: 200,
+    right: 20,
+  },
+
+  modalButton: {
+    borderRadius: 5,
+    gap: 8,
+  },
+
+  modalButtonItem: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 10,
+    backgroundColor: "black",
+    paddingVertical: 15,
+    paddingHorizontal: 15,
+  },
+
+  modalButtonText: {
+    color: "#FFD600",
+    fontSize: 20,
   },
 });
 
