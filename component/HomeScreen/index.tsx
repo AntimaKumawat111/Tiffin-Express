@@ -9,6 +9,9 @@ import {
   View,
 } from "react-native";
 import { FontAwesome5, Ionicons, MaterialIcons } from "@expo/vector-icons";
+import { router } from "expo-router";
+import { useFonts, YesevaOne_400Regular } from "@expo-google-fonts/yeseva-one";
+import { Nunito_700Bold, Nunito_500Medium } from "@expo-google-fonts/nunito";
 
 interface CardDataProps {
   url: string;
@@ -34,6 +37,15 @@ const cardData: CardDataProps[] = [
 
 function HomeScreen() {
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [fontLoaded] = useFonts({
+    YesevaOne_400Regular,
+    Nunito_500Medium,
+    Nunito_700Bold,
+  });
+
+  if (!fontLoaded) {
+    return null;
+  }
 
   return (
     <View style={{ flex: 1 }}>
@@ -78,10 +90,19 @@ function HomeScreen() {
               style={styles.modalButton}
               onPress={() => setIsModalVisible(false)}
             >
-              <View style={styles.modalButtonItem}>
+              <TouchableOpacity
+                style={styles.modalButtonItem}
+                onPress={() => {
+                  setIsModalVisible(false);
+                  router.push("./subscription");
+                }}
+              >
                 <MaterialIcons name="dinner-dining" color="#FFD600" size={24} />
-                <Text style={styles.modalButtonText}>Add Order</Text>
-              </View>
+                <View style={styles.modalButton}>
+                  <Text style={styles.modalButtonText}>Add Order</Text>
+                </View>
+              </TouchableOpacity>
+
               <View style={styles.modalButtonItem}>
                 <Ionicons name="call" color="#FFD600" size={24} />
                 <Text style={styles.modalButtonText}>Call Us</Text>
@@ -122,7 +143,6 @@ const styles = StyleSheet.create({
   },
 
   scrollViewContent: {
-    // flexGrow: 1,
     paddingBottom: 30,
   },
 
@@ -138,13 +158,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+
   title: {
-    fontSize: 30,
-    fontWeight: "bold",
-    marginVertical: 20,
-    fontFamily: "YesevaOne-Regular",
-    width: 200,
+    fontSize: 40,
+    marginBottom: 20,
+    fontFamily: "YesevaOne_400Regular",
   },
+
   card: {
     marginBottom: 50,
     paddingVertical: 5,
@@ -154,9 +174,10 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderBottomColor: "#929AAB",
   },
+  
   cardImage: {
     width: "auto",
-    height: 245, // Fixed height
+    height: 245,
     resizeMode: "cover",
   },
 
@@ -164,32 +185,41 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     paddingVertical: 15,
   },
+
   cardTitle: {
     fontSize: 24,
-    fontWeight: 700,
+    // fontWeight: 700,
+    fontFamily: "Nunito_700Bold",
+    
   },
+  
   cardDescription: {
     fontSize: 16,
     color: "#929AAB",
     fontWeight: 500,
+    fontFamily: "Nunito_700Bold",
   },
+  
   cardPriceBtn: {
     backgroundColor: "black",
     flexDirection: "row",
-    paddingHorizontal: 10,
+    paddingHorizontal: 20,
     paddingVertical: 15,
     justifyContent: "space-between",
     marginTop: 15,
   },
   OrderNowText: {
+    fontFamily: "Nunito_700Bold",
     color: "white",
     fontSize: 26,
-    fontWeight: 700,
+    // fontWeight: 700,
   },
   cardPrice: {
     color: "white",
     fontSize: 26,
-    fontWeight: 700,
+    // fontWeight: 700,
+    fontFamily: "Nunito_700Bold",
+
   },
   plusIconContainer: {
     elevation: 7,

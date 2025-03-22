@@ -1,10 +1,10 @@
-import NotificationScreen from "@/component/NotificationScreen";
+import SubscriptionScreen from "@/component/SubscriptionScreen";
 import { ScrollView, StyleSheet, Text } from "react-native";
 
-export default function Notification() {
+export default function Subscription() {
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
-      <NotificationScreen />
+      <SubscriptionScreen />
     </ScrollView>
   );
 }
