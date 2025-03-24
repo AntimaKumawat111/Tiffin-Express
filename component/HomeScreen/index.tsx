@@ -9,7 +9,7 @@ import {
   View,
 } from "react-native";
 import { FontAwesome5, Ionicons, MaterialIcons } from "@expo/vector-icons";
-import { router } from "expo-router";
+import { Link, router } from "expo-router";
 import { useFonts, YesevaOne_400Regular } from "@expo-google-fonts/yeseva-one";
 import { Nunito_700Bold, Nunito_500Medium } from "@expo-google-fonts/nunito";
 
@@ -128,10 +128,15 @@ export function Card({ url, title, description, price }: CardDataProps) {
       </View>
 
       {/* Order Button & Price */}
-      <View style={styles.cardPriceBtn}>
-        <Text style={styles.OrderNowText}>Order Now</Text>
-        <Text style={styles.cardPrice}>₹ {price}</Text>
-      </View>
+      <TouchableOpacity>
+        {/* <Text style={styles.OrderNowText}>Order Now</Text> */}
+        <Link href={"./addOrders"} style={styles.cardPriceBtn}>
+          <View className="w-full flex flex-row justify-between items-center">
+            <Text style={styles.OrderNowText}>Order Now</Text>
+            <Text style={styles.cardPrice}>₹ {price}</Text>
+          </View>
+        </Link>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -174,7 +179,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderBottomColor: "#929AAB",
   },
-  
+
   cardImage: {
     width: "auto",
     height: 245,
@@ -190,22 +195,20 @@ const styles = StyleSheet.create({
     fontSize: 24,
     // fontWeight: 700,
     fontFamily: "Nunito_700Bold",
-    
   },
-  
+
   cardDescription: {
     fontSize: 16,
     color: "#929AAB",
     fontWeight: 500,
     fontFamily: "Nunito_700Bold",
   },
-  
+
   cardPriceBtn: {
     backgroundColor: "black",
-    flexDirection: "row",
+    borderWidth: 1,
     paddingHorizontal: 20,
     paddingVertical: 15,
-    justifyContent: "space-between",
     marginTop: 15,
   },
   OrderNowText: {
@@ -219,7 +222,6 @@ const styles = StyleSheet.create({
     fontSize: 26,
     // fontWeight: 700,
     fontFamily: "Nunito_700Bold",
-
   },
   plusIconContainer: {
     elevation: 7,

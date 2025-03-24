@@ -1,19 +1,17 @@
-import HomeScreen from "@/component/HomeScreen";
-import { ScrollView, StyleSheet, Text } from "react-native";
+import AddOrderScreen from "@/component/AddOrdersScreen";
+import { ScrollView, StyleSheet } from "react-native";
 
-export default function Index() {
+export default function AddOrder() {
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
-      <HomeScreen />
+      <AddOrderScreen />
     </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   scrollContainer: {
-    marginTop: 50,
     flexGrow: 1,
     // alignItems: "center",
-    marginHorizontal:15,
   },
 });

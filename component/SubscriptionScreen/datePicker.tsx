@@ -105,8 +105,6 @@ function DatePicker({
           onChange={onEndChange}
         />
       )}
-
-      <Text style={styles.infoText}>Days Difference: {dayDifference}</Text>
     </View>
   );
 }

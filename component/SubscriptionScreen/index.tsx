@@ -1,8 +1,19 @@
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "expo-router";
 import React, { useState } from "react";
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, StyleSheet, TouchableOpacity } from "react-native";
 import DatePicker from "./datePicker";
+import { useRef } from "react";
+import {
+  View,
+  Text,
+  Pressable,
+  Animated,
+  Dimensions,
+  PanResponder,
+} from "react-native";
+
+const { height } = Dimensions.get("window");
 
 const imageData = [
   {
@@ -74,31 +85,28 @@ export default function SubscriptionScreen() {
           </View>
         </View>
       </View>
+
+      <View className={tailwindStyles.bottomContainer}>
+        <BottomContainer totalValue={totalDays} />
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   main: {
-    marginHorizontal: 10,
-    borderWidth: 1,
-    borderColor: "black",
+    marginHorizontal: 20,
+    minHeight: "100%",
   },
   gobackIcon: {
-    borderWidth: 1,
-    borderColor: "black",
     marginTop: 20,
   },
   title: {
     fontWeight: 400,
     fontSize: 40,
-    borderWidth: 1,
-    borderColor: "black",
     marginVertical: 20,
   },
   desc: {
-    borderWidth: 1,
-    borderColor: "black",
     fontWeight: 500,
     fontSize: 19,
     color: "#929AAB",
@@ -157,3 +165,113 @@ const styles = StyleSheet.create({
     fontSize: 19,
   },
 });
+interface DataPropType {
+  name?: string; // Optional property
+  price: number;
+}
+
+const data: DataPropType = {
+  name: "Tiffin",
+  price: 40,
+};
+
+const orderPrice: DataPropType = {
+  price: 50,
+};
+
+// console.log(data, orderPrice);
+
+export const tailwindStyles = {
+  bottomContainer: "absolute bottom-2 w-full",
+  orderBtn:
+    "bg-black mx-5 py-4 flex flex-row item-center justify-between px-5",
+  OrderNowText: "text-white text-xl ",
+  modalBtnPrice: "text-white text-xl",
+  modalBtn:
+    "bg-black py-4 mt-6 flex flex-row item-center justify-between px-5",
+};
+
+export function BottomContainer({ totalValue }: any) {
+  const [isVisible, setIsVisible] = useState(false);
+  const translateY = useRef(new Animated.Value(height)).current;
+
+  const openSheet = () => {
+    setIsVisible(true);
+    Animated.timing(translateY, {
+      toValue: 0,
+      duration: 300,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const closeSheet = () => {
+    Animated.timing(translateY, {
+      toValue: height,
+      duration: 300,
+      useNativeDriver: true,
+    }).start(() => setIsVisible(false));
+  };
+
+  // PanResponder for detecting swipe gestures
+  const panResponder = useRef(
+    PanResponder.create({
+      onMoveShouldSetPanResponder: (_, gestureState) =>
+        Math.abs(gestureState.dy) > 10, // Detect only vertical swipes
+      onPanResponderMove: (_, gestureState) => {
+        if (gestureState.dy > 0) {
+          translateY.setValue(gestureState.dy);
+        }
+      },
+      onPanResponderRelease: (_, gestureState) => {
+        if (gestureState.dy > 100) {
+          closeSheet(); // Close sheet if swiped down enough
+        } else {
+          openSheet(); // Snap back if not swiped enough
+        }
+      },
+    })
+  ).current;
+
+  return (
+    <View className="">
+      <Pressable onPress={openSheet} className="w-full rounded">
+        <View className={tailwindStyles.orderBtn}>
+          <Text className={tailwindStyles.OrderNowText}>Order Now</Text>
+          <Text className={tailwindStyles.modalBtnPrice}>₹ {orderPrice.price}</Text>
+        </View>
+      </Pressable>
+
+      {isVisible && (
+        <Animated.View
+          style={{ transform: [{ translateY }] }}
+          className="absolute bottom-0  w-full bg-white h-80 p-5 rounded-t-2xl shadow-lg"
+          {...panResponder.panHandlers} // Attach gesture handler
+        >
+          {/* Draggable Bar for Swipe Down */}
+          <Pressable
+            onPress={closeSheet}
+            className="justify-center items-center flex mb-3"
+          >
+            <View className="w-1/4 h-2 bg-gray-400 rounded-full"></View>
+          </Pressable>
+
+          <View className="flex flex-row justify-between mt-4 px-4 py-4   border-b border-gray-500  ">
+            <Text className="font-bold text-xl">Total days selected</Text>
+            <Text>{totalValue}</Text>
+          </View>
+          <View className="flex flex-row justify-between  mt-4 px-4 py-4   border-b border-gray-500 " >
+            <Text className="font-bold text-xl">{data.name}</Text>
+            <Text>{data.price}</Text>
+          </View>
+
+          <View className={tailwindStyles.modalBtn}>
+            <Text className={tailwindStyles.OrderNowText}>Order Now</Text>
+            <Text className={tailwindStyles.modalBtnPrice}>
+              ₹ {orderPrice.price}
+            </Text>
+          </View>
+        </Animated.View>
+      )}
+    </View>
+  );
+}

@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
   OtpVarify: {
     height: "auto",
     width: "auto",
-    marginHorizontal: 10,
+    marginHorizontal: 15,
   },
 
   title: {

@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
   LoginScreen: {
     height: "auto",
     width: "auto",
-    marginHorizontal: 10,
+    marginHorizontal: 12,
   },
 
   title: {
