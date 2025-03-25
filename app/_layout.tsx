@@ -7,6 +7,8 @@ export default function RootLayout() {
       <Stack.Screen name="otp" />
       <Stack.Screen name="subscription" />
       <Stack.Screen name="addOrders" />
+      <Stack.Screen name="order" />
+      <Stack.Screen name="profile" />
     </Stack>
   );
 }

@@ -18,7 +18,7 @@ function LoginScreen() {
 
   return (
     <View style={styles.LoginScreen}>
-      <Text style={styles.title}>Tiffin Express</Text>
+      <Text style={styles.title}>Tiffin {"\n"}Express</Text>
       <Text style={styles.subTitle}>Log in to Your Tiffin Express Account</Text>
       <Text style={styles.description}>
         Enter your mobile number to order your delicious lunch options.
@@ -48,13 +48,13 @@ const styles = StyleSheet.create({
   LoginScreen: {
     height: "auto",
     width: "auto",
-    marginHorizontal: 12,
+    // marginHorizontal: 12,
   },
 
   title: {
-    fontSize: 45,
-    marginTop: 40,
-    marginBottom: 20,
+    fontSize: 40,
+    // marginTop: 40,
+    marginBottom: 5,
     fontWeight: 600,
     fontFamily: "YesevaOne_400Regular",
   },

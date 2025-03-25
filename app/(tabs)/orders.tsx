@@ -1,18 +1,16 @@
-import OrdersScreen from "@/component/OrdersScreen";
-import { ScrollView, StyleSheet, Text } from "react-native";
+import MyOrdersScreen from "@/component/MyOrdersScreen";
+import { ScrollView, StyleSheet } from "react-native";
 
 export default function Orders() {
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
-      <OrdersScreen />
+      <MyOrdersScreen />
     </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   scrollContainer: {
-    // marginTop: 50,
     flexGrow: 1,
-    // alignItems: "center",
   },
 });

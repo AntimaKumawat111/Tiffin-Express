@@ -18,7 +18,7 @@ function OtpVerifyScreen() {
 
   return (
     <View style={styles.OtpVarify}>
-      <Text style={styles.title}>Tiffin Express</Text>
+      <Text style={styles.title}>Tiffin{"\n"}Express</Text>
       <Text style={styles.subTitle}>Verify Your Mobile Number</Text>
       <Text style={styles.description}>
         We've sent a 6-digit code to your mobile number. Please enter it below.{" "}
@@ -48,13 +48,13 @@ const styles = StyleSheet.create({
   OtpVarify: {
     height: "auto",
     width: "auto",
-    marginHorizontal: 15,
+    // marginHorizontal: 15,
   },
 
   title: {
     fontSize: 45,
-    marginTop: 40,
-    marginBottom: 20,
+    // marginTop: 40,
+    marginBottom: 5,
     fontWeight: 600,
     fontFamily: "YesevaOne_400Regular",
   },

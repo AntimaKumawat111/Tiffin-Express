@@ -125,16 +125,18 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 19,
-    fontWeight: "700",
+    // fontWeight: "700",
+    fontFamily: "Nunito_700Bold",
   },
   input: {
     backgroundColor: "transparent",
   },
   infoText: {
+    borderWidth: 1,
+    borderColor: "black",
     marginTop: 10,
-    fontSize: 16,
-    fontWeight: "bold",
-    color: "#333",
+    fontFamily: "Nunito_700Bold",
+    color: "red",
   },
 });
 

@@ -54,9 +54,14 @@ function HomeScreen() {
         contentContainerStyle={styles.scrollViewContent}
       >
         <View style={styles.HomePage}>
-          <Text style={styles.title}>Tiffin Express</Text>
+          <Text style={[styles.title, { flexShrink: 1 }]}>
+            Tiffin {"\n"}Express
+          </Text>
+
           <View style={styles.personiconContainer}>
-            <FontAwesome5 name="user-alt" size={24} color="white" />
+            <Link href="./profile">
+              <FontAwesome5 name="user-alt" size={30} color="white" />
+            </Link>
           </View>
         </View>
 
@@ -143,12 +148,12 @@ export function Card({ url, title, description, price }: CardDataProps) {
 
 const styles = StyleSheet.create({
   main: {
+    paddingTop:15,
     flexGrow: 1,
     minHeight: "100%",
   },
 
   scrollViewContent: {
-    paddingBottom: 30,
   },
 
   HomePage: {
@@ -211,18 +216,19 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     marginTop: 15,
   },
+
   OrderNowText: {
     fontFamily: "Nunito_700Bold",
     color: "white",
     fontSize: 26,
-    // fontWeight: 700,
   },
+
   cardPrice: {
     color: "white",
     fontSize: 26,
-    // fontWeight: 700,
     fontFamily: "Nunito_700Bold",
   },
+  
   plusIconContainer: {
     elevation: 7,
     padding: 10,
@@ -233,9 +239,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     alignSelf: "flex-end",
-    bottom: 145,
+    bottom: 100,
     position: "sticky",
   },
+  
   /* Modal Styles */
   modalBackground: {
     flex: 1,

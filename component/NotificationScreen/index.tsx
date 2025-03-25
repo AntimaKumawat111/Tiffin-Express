@@ -47,7 +47,7 @@ export default function NotificationScreen() {
   }
 
   return (
-    <View>
+    <View className="flex-1 px-5 pt-10">
       <View
         style={{
           position: "absolute",
@@ -136,16 +136,12 @@ export default function NotificationScreen() {
 
 const styles = StyleSheet.create({
   title: {
-    marginHorizontal: 10,
-    fontSize: 45,
-    marginTop: 40,
+    fontSize: 40,
     marginBottom: 20,
     fontFamily: "YesevaOne_400Regular",
   },
 
   desc: {
-    marginHorizontal: 10,
-    marginBottom: 10,
     fontSize: 19,
     color: "#929AAB",
     fontFamily: "Nunito_700Bold",
@@ -155,7 +151,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginHorizontal: 10,
     marginVertical: 20,
   },
 
@@ -166,7 +161,6 @@ const styles = StyleSheet.create({
   },
 
   container: {
-    marginHorizontal: 10,
     marginVertical: 5,
     flexDirection: "row",
     alignItems: "center",

@@ -78,9 +78,6 @@ export default function AddOrdersScreen() {
     setIsContinueBtnShow(true);
   };
 
-
-
-  
   const handleCheckboxChange = (meal: "morning" | "evening") => {
     setMealOptions((prev) => ({
       ...prev,
@@ -89,7 +86,7 @@ export default function AddOrdersScreen() {
   };
 
   return (
-    <View className="px-5">
+    <View className="px-5 flex-1">
       {/* Background Shape */}
       <View
         style={{
@@ -103,15 +100,13 @@ export default function AddOrdersScreen() {
       ></View>
       {/* Heading */}
       <View className="flex flex-row items-center justify-between ">
-        <Text style={styles.myOrderText}>Add Orders</Text>
+        <Text style={styles.addOrders}>Add Orders</Text>
         <Link
           href="/subscription"
-          className="bg-pink-700 px-3 py-1"
-          style={{ width: 100 }}
+          className="bg-pink-700 px-3 py-3"
+          style={{ width: 120, fontFamily: "Nunito_500Medium_Italic" }}
         >
-          <Text className="text-white break-words text-lg">
-            Check Subscriptions
-          </Text>
+          <Text className="text-white ">Check {"\n"}Subscriptions</Text>
         </Link>
       </View>
 
@@ -159,7 +154,32 @@ export default function AddOrdersScreen() {
         />
       )}
 
-      {isContinueBtnShow && <Button title=" Continue" />}
+      {isContinueBtnShow && (
+        <Link
+          href="./order"
+          className="border border-red-900 w-full mx-5"
+          style={{
+            justifyContent: "center",
+            alignItems: "center",
+            display: "flex",
+            paddingVertical: 10,
+            backgroundColor: "black",
+            position: "absolute",
+            bottom: 10,
+          }}
+        >
+          <Text
+            style={{
+              textAlign: "center",
+              fontSize: 26,
+              fontFamily: "Nunito_700Bold",
+              color: "white",
+            }}
+          >
+            Continue
+          </Text>
+        </Link>
+      )}
     </View>
   );
 }
@@ -212,7 +232,6 @@ export function ModalVistible({
               style={{
                 fontSize: 18,
                 fontFamily: "Nunito_500Medium_Italic",
-
                 color: "#00C2FF",
               }}
             >
@@ -229,6 +248,8 @@ export function ModalVistible({
             <Checkbox
               status={mealOptions.morning ? "checked" : "unchecked"}
               onPress={() => handleCheckboxChange("morning")}
+              color="#00C2FF" // Checked state color
+              uncheckedColor="#888" // Unchecked state color
             />
             <Text style={styles.checkboxLabel}>Morning</Text>
           </TouchableOpacity>
@@ -242,6 +263,8 @@ export function ModalVistible({
             <Checkbox
               status={mealOptions.evening ? "checked" : "unchecked"}
               onPress={() => handleCheckboxChange("evening")}
+              color="#00C2FF" // Checked state color
+              uncheckedColor="#888" // Unchecked state color
             />
             <Text style={styles.checkboxLabel}>Evening</Text>
           </TouchableOpacity>
@@ -276,29 +299,24 @@ export function ModalVistible({
     </Modal>
   );
 }
-// style={styles.submitButton}
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
     marginVertical: 10,
-    // marginHorizontal: 10,
   },
 
-  myOrderText: {
+  addOrders: {
     letterSpacing: 0,
     fontWeight: "400",
     fontSize: 40,
     marginTop: 20,
     marginBottom: 20,
-    // paddingHorizontal: 10,
     width: 200,
     fontFamily: "YesevaOne_400Regular",
   },
 
   desc: {
     fontSize: 19,
-    // paddingHorizontal: 10,
     color: "#929AAB",
     fontFamily: "Nunito_700Bold",
     marginBottom: 20,
@@ -314,9 +332,7 @@ const styles = StyleSheet.create({
   warningText: {
     fontWeight: "400",
     fontSize: 12,
-    // paddingHorizontal: 10,
-    // textAlign: "center",
-    color: "#929AAB", // Default color
+    color: "#929AAB",
     fontFamily: "Nunito_700Bold",
   },
 

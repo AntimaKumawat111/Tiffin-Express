@@ -1,10 +1,10 @@
-import HomeScreen from "@/component/HomeScreen";
+import ProfileScreen from "@/component/ProfileScreen";
 import { ScrollView, StyleSheet, Text } from "react-native";
 
-export default function Index() {
+export default function Profile() {
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
-      <HomeScreen />
+      <ProfileScreen />
     </ScrollView>
   );
 }
@@ -12,6 +12,6 @@ export default function Index() {
 const styles = StyleSheet.create({
   scrollContainer: {
     flexGrow: 1,
-    paddingHorizontal:15,
+    paddingTop: 15,
   },
 });

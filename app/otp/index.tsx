@@ -12,6 +12,7 @@ export default function Otp() {
 const styles = StyleSheet.create({
   scrollContainer: {
     flexGrow: 1,
-    alignItems: "center",
+    paddingHorizontal:20,
+    paddingTop:20
   },
 });

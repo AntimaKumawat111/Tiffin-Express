@@ -4,6 +4,9 @@ import React, { useState } from "react";
 import { Image, StyleSheet, TouchableOpacity } from "react-native";
 import DatePicker from "./datePicker";
 import { useRef } from "react";
+import { useFonts, YesevaOne_400Regular } from "@expo-google-fonts/yeseva-one";
+import { Nunito_700Bold, Nunito_500Medium } from "@expo-google-fonts/nunito";
+
 import {
   View,
   Text,
@@ -33,6 +36,16 @@ const imageData = [
 export default function SubscriptionScreen() {
   const navigation = useNavigation();
   const [totalDays, setTotalDays] = useState(0);
+
+  const [fontLoaded] = useFonts({
+    YesevaOne_400Regular,
+    Nunito_500Medium,
+    Nunito_700Bold,
+  });
+
+  if (!fontLoaded) {
+    return null;
+  }
 
   return (
     <View>
@@ -102,15 +115,15 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   title: {
-    fontWeight: 400,
     fontSize: 40,
     marginVertical: 20,
+    fontFamily: "YesevaOne_400Regular",
   },
   desc: {
-    fontWeight: 500,
     fontSize: 19,
     color: "#929AAB",
     marginBottom: 20,
+    fontFamily: "Nunito_700Bold",
   },
 
   Container: {
@@ -143,7 +156,8 @@ const styles = StyleSheet.create({
   },
   priceText: {
     fontSize: 14,
-    fontWeight: "bold",
+    // fontWeight: "bold",
+    fontFamily: "Nunito_500Medium",
   },
   middleContainer: {
     borderWidth: 2,
@@ -161,20 +175,26 @@ const styles = StyleSheet.create({
   },
   name: {
     textAlign: "center",
-    fontWeight: 700,
     fontSize: 19,
+    fontFamily: "Nunito_700Bold",
   },
 });
+
 interface DataPropType {
   name?: string; // Optional property
   price: number;
 }
 
-const data: DataPropType = {
-  name: "Tiffin",
-  price: 40,
-};
-
+const data: DataPropType[] = [
+  {
+    name: "Tiffin",
+    price: 40,
+  },
+  {
+    name: "Pickle",
+    price: 40,
+  },
+];
 const orderPrice: DataPropType = {
   price: 50,
 };
@@ -182,13 +202,11 @@ const orderPrice: DataPropType = {
 // console.log(data, orderPrice);
 
 export const tailwindStyles = {
-  bottomContainer: "absolute bottom-2 w-full",
-  orderBtn:
-    "bg-black mx-5 py-4 flex flex-row item-center justify-between px-5",
+  bottomContainer: "absolute bottom-6 w-full",
+  orderBtn: "bg-black mx-5 py-4 flex flex-row item-center justify-between px-5",
   OrderNowText: "text-white text-xl ",
   modalBtnPrice: "text-white text-xl",
-  modalBtn:
-    "bg-black py-4 mt-6 flex flex-row item-center justify-between px-5",
+  modalBtn: "bg-black py-4 mt-6 flex flex-row item-center justify-between px-5",
 };
 
 export function BottomContainer({ totalValue }: any) {
@@ -236,8 +254,18 @@ export function BottomContainer({ totalValue }: any) {
     <View className="">
       <Pressable onPress={openSheet} className="w-full rounded">
         <View className={tailwindStyles.orderBtn}>
-          <Text className={tailwindStyles.OrderNowText}>Order Now</Text>
-          <Text className={tailwindStyles.modalBtnPrice}>₹ {orderPrice.price}</Text>
+          <Text
+            className={tailwindStyles.OrderNowText}
+            style={{ fontFamily: "Nunito_700Bold" }}
+          >
+            Order Now
+          </Text>
+          <Text
+            className={tailwindStyles.modalBtnPrice}
+            style={{ fontFamily: "Nunito_700Bold" }}
+          >
+            ₹ {orderPrice.price}
+          </Text>
         </View>
       </Pressable>
 
@@ -255,18 +283,39 @@ export function BottomContainer({ totalValue }: any) {
             <View className="w-1/4 h-2 bg-gray-400 rounded-full"></View>
           </Pressable>
 
-          <View className="flex flex-row justify-between mt-4 px-4 py-4   border-b border-gray-500  ">
-            <Text className="font-bold text-xl">Total days selected</Text>
-            <Text>{totalValue}</Text>
-          </View>
-          <View className="flex flex-row justify-between  mt-4 px-4 py-4   border-b border-gray-500 " >
-            <Text className="font-bold text-xl">{data.name}</Text>
-            <Text>{data.price}</Text>
+          <View className="flex flex-row justify-between mt-4 px-4 py-4   border-b border-gray-200  ">
+            <Text className="text-xl" style={{ fontFamily: "Nunito_700Bold" }}>
+              Total days selected
+            </Text>
+            <Text style={{ fontFamily: "Nunito_700Bold" }}>{totalValue}</Text>
           </View>
 
+          {data.map((data, index) => (
+            <View
+              key={index}
+              className="flex flex-row justify-between  mt-4 px-4 py-1 "
+            >
+              <Text
+                style={{ fontFamily: "Nunito_700Bold" }}
+                className="text-xl"
+              >
+                {data.name}
+              </Text>
+              <Text style={{ fontFamily: "Nunito_700Bold" }}>{data.price}</Text>
+            </View>
+          ))}
+
           <View className={tailwindStyles.modalBtn}>
-            <Text className={tailwindStyles.OrderNowText}>Order Now</Text>
-            <Text className={tailwindStyles.modalBtnPrice}>
+            <Text
+              className={tailwindStyles.OrderNowText}
+              style={{ fontFamily: "Nunito_700Bold" }}
+            >
+              Order Now
+            </Text>
+            <Text
+              className={tailwindStyles.modalBtnPrice}
+              style={{ fontFamily: "Nunito_700Bold" }}
+            >
               ₹ {orderPrice.price}
             </Text>
           </View>
