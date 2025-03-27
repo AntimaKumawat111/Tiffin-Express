@@ -204,8 +204,8 @@ const orderPrice: DataPropType = {
 // console.log(data, orderPrice);
 
 export const tailwindStyles = {
-  bottomContainer: "absolute bottom-2 w-full",
-  orderBtn: "bg-black mx-5 py-4 flex flex-row item-center justify-between px-5",
+  bottomContainer: "absolute bottom-5 w-full",
+  orderBtn: "bg-black mx-5 py-4  flex flex-row item-center justify-between px-5",
   OrderNowText: "text-white text-xl ",
   modalBtnPrice: "text-white text-xl",
   modalBtn: "bg-black py-4 mt-6 flex flex-row item-center justify-between px-5",
@@ -274,7 +274,7 @@ export function BottomContainer({ totalValue }: any) {
       {isVisible && (
         <Animated.View
           style={{ transform: [{ translateY }] }}
-          className="absolute bottom-0  w-full bg-white h-80 p-5 rounded-t-2xl shadow-lg"
+          className="absolute bottom-0  w-full bg-white h-80 px-5 rounded-t-2xl shadow-lg"
           {...panResponder.panHandlers} // Attach gesture handler
         >
           {/* Draggable Bar for Swipe Down */}
@@ -285,7 +285,7 @@ export function BottomContainer({ totalValue }: any) {
             <View className="w-1/4 h-2 bg-gray-400 rounded-full"></View>
           </Pressable>
 
-          <View className="flex flex-row justify-between mt-4 px-4 py-4   border-b border-gray-50  ">
+          <View className="flex flex-row justify-between mt-2 px-4 py-4  border-b border-gray-50  ">
             <Text style={{ fontFamily: "Nunito_700Bold" }} className="text-xl">
               Total days selected
             </Text>
@@ -293,7 +293,7 @@ export function BottomContainer({ totalValue }: any) {
           </View>
 
           {data.map((data, index) => (
-            <View key={index} className="flex flex-row justify-between  mt-4 px-4 py-4 ">
+            <View key={index} className="flex flex-row justify-between  mt-4 px-4 py-1 ">
               <Text
                 style={{ fontFamily: "Nunito_700Bold" }}
                 className="text-xl"

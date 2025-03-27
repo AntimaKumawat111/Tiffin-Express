@@ -104,7 +104,7 @@ function HomeScreen() {
               >
                 <MaterialIcons name="dinner-dining" color="#FFD600" size={24} />
                 <View style={styles.modalButton}>
-                  <Text style={styles.modalButtonText}>Add Order</Text>
+                  <Text style={styles.modalButtonText}>Subscription</Text>
                 </View>
               </TouchableOpacity>
 

@@ -157,7 +157,7 @@ export default function AddOrdersScreen() {
       {isContinueBtnShow && (
         <Link
           href="./order"
-          className="border border-red-900 w-full mx-5"
+          className="w-full mx-5"
           style={{
             justifyContent: "center",
             alignItems: "center",

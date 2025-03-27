@@ -1,5 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
-import { useNavigation } from "expo-router";
+import { Link, useNavigation } from "expo-router";
 import React, { useState } from "react";
 import { Image, StyleSheet, TouchableOpacity } from "react-native";
 import DatePicker from "./datePicker";
@@ -305,7 +305,7 @@ export function BottomContainer({ totalValue }: any) {
             </View>
           ))}
 
-          <View className={tailwindStyles.modalBtn}>
+          <Link href="./delivery" className={tailwindStyles.modalBtn}>
             <Text
               className={tailwindStyles.OrderNowText}
               style={{ fontFamily: "Nunito_700Bold" }}
@@ -318,7 +318,7 @@ export function BottomContainer({ totalValue }: any) {
             >
               ₹ {orderPrice.price}
             </Text>
-          </View>
+          </Link>
         </Animated.View>
       )}
     </View>

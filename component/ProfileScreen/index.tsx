@@ -138,19 +138,31 @@ export default function ProfileScreen() {
               )}
 
               {isEditingNumber ? (
-                <TextInput
-                  style={styles.mobileNumber}
-                  value={mobileNumber}
-                  onChangeText={setMobileNumber}
-                  keyboardType="phone-pad"
-                  autoFocus
-                />
+                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                  <Text style={[styles.mobileNumber, { paddingRight: 4 }]}>
+                    +91
+                  </Text>
+                  <TextInput
+                    style={[styles.mobileNumber, { flex: 1 }]}
+                    value={mobileNumber}
+                    onChangeText={(text) =>
+                      setMobileNumber(text.replace(/[^0-9]/g, ""))
+                    }
+                    keyboardType="phone-pad"
+                    autoFocus
+                  />
+                </View>
               ) : (
-                <Text style={styles.mobileNumber}>+91 {mobileNumber}</Text>
+                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                  <Text style={[styles.mobileNumber, { paddingRight: 4 }]}>
+                    +91
+                  </Text>
+                  <Text style={styles.mobileNumber}>{mobileNumber}</Text>
+                </View>
               )}
             </View>
           </View>
-
+ 
           {/* Address Section */}
           <View className="flex flex-row gap-5 my-4 items-center">
             <View className="p-3 rounded-full bg-[#FFC700]/20">
@@ -238,17 +250,29 @@ const styles = StyleSheet.create({
   userName: {
     fontFamily: "Nunito_700Bold",
     fontSize: 40,
+    paddingVertical: 0, // Remove unwanted padding
+    includeFontPadding: false, // Fix height inconsistency
+    textAlignVertical: "center", // Align text properly
+    paddingLeft: 5,
   },
 
   mobileNumber: {
     fontFamily: "Nunito_700Bold",
     fontSize: 22,
     color: "#929AAB",
+    paddingVertical: 0,
+    includeFontPadding: false,
+    textAlignVertical: "center",
+    paddingLeft: 5,
   },
 
   address: {
+    paddingLeft: 5,
     fontFamily: "Nunito_700Bold",
     fontSize: 18,
     color: "#929AAB",
+    paddingVertical: 0,
+    includeFontPadding: false,
+    textAlignVertical: "center",
   },
 });
