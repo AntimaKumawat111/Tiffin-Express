@@ -198,7 +198,8 @@ export function AddNewAddreses() {
   const [isClicked, setIsClicked] = useState(false);
 
   return (
-    <TouchableOpacity
+    <Link
+      href="/changeAddress"
       className={`w-full p-3  rounded-md flex flex-row flex-1 items-center justify-center
         ${
           isClicked
@@ -213,7 +214,7 @@ export function AddNewAddreses() {
         <MaterialIcons name="add-location" size={30} color="#00B4D8" />
       </View>
       <Text style={styles.addNewAddress}>Add new address</Text>
-    </TouchableOpacity>
+    </Link>
   );
 }
 

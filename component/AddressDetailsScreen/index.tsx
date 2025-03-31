@@ -123,13 +123,6 @@ export default function AddressDetailsScreen() {
 
         <AddressForm />
       </View>
-
-      <TouchableOpacity>
-        {/* <Link href={"./AddressDetails"} style={styles.continuebtn}>
-          <Text style={styles.continueText}>Continue</Text>
-        </Link> */}
-        {/* <Button title="Save Address" /> */}
-      </TouchableOpacity>
     </View>
   );
 }
