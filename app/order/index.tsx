@@ -12,6 +12,5 @@ export default function Orders() {
 const styles = StyleSheet.create({
   scrollContainer: {
     flexGrow: 1,
-    alignItems: "center",
   },
 });

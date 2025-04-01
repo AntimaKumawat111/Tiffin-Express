@@ -67,7 +67,8 @@ export default function OrdersScreen() {
           <Ionicons name="chevron-back-outline" size={30} color="black" />
         </TouchableOpacity>
 
-        <Text style={styles.title}> Orders</Text>
+        <Text style={styles.title}>Orders</Text>
+
         <Text style={styles.desc}>
           Order our add ons with your tempting order.
         </Text>
@@ -205,7 +206,8 @@ const orderPrice: DataPropType = {
 
 export const tailwindStyles = {
   bottomContainer: "absolute bottom-5 w-full",
-  orderBtn: "bg-black mx-5 py-4  flex flex-row item-center justify-between px-5",
+  orderBtn:
+    "bg-black mx-5 py-4  flex flex-row item-center justify-between px-5",
   OrderNowText: "text-white text-xl ",
   modalBtnPrice: "text-white text-xl",
   modalBtn: "bg-black py-4 mt-6 flex flex-row item-center justify-between px-5",
@@ -293,7 +295,10 @@ export function BottomContainer({ totalValue }: any) {
           </View>
 
           {data.map((data, index) => (
-            <View key={index} className="flex flex-row justify-between  mt-4 px-4 py-1 ">
+            <View
+              key={index}
+              className="flex flex-row justify-between  mt-4 px-4 py-1 "
+            >
               <Text
                 style={{ fontFamily: "Nunito_700Bold" }}
                 className="text-xl"

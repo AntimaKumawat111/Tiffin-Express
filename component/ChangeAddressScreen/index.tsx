@@ -1,13 +1,10 @@
-import { Feather, Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { Link, useNavigation } from "expo-router";
-import React, { useState } from "react";
+import React from "react";
 import { Image, StyleSheet, TouchableOpacity } from "react-native";
 import { View, Text, Dimensions } from "react-native";
 
 import { useFonts, YesevaOne_400Regular } from "@expo-google-fonts/yeseva-one";
 import { Nunito_700Bold, Nunito_500Medium } from "@expo-google-fonts/nunito";
-import { TextInput } from "react-native-paper";
-import MapView, { Marker } from "react-native-maps";
 import Map from "../Map";
 
 const screenHeight = Dimensions.get("window").height; // screen's total height
@@ -32,41 +29,6 @@ export default function ChangeAddressScreen() {
           style={{ height: screenHeight * 0.64 }} // heigh is 60% of the screen size
         >
           <Map />
-
-          <View className="absolute mt-20 w-full flex flex-row px-10 items-center gap-4">
-            <TouchableOpacity
-              onPress={() => navigation.goBack()}
-              className="bg-white p-1"
-            >
-              <Ionicons name="chevron-back-outline" size={30} color="black" />
-            </TouchableOpacity>
-            <View
-              style={styles.inputBoxContainer}
-              className="flex flex-row items-center bg-white px-3 flex-1"
-            >
-              <Feather name="search" size={24} color="black" />
-              <TextInput
-                placeholder="Search for delivery area"
-                className="border-b-0"
-                style={styles.inputBox}
-              />
-            </View>
-          </View>
-          {/* <View className="absolute p-4 bg-white rounded-md bottom-8 right-14">
-            <MaterialIcons name="my-location" size={24} color="black" />
-          </View> */}
-          <View className="p-4 bg-[#6D6DFA33] w-20 h-20 flex items-center justify-center rounded-full ">
-            <Image
-              source={require("../../assets/images/location.png")}
-              style={{
-                position: "relative",
-                width: 40,
-                height: 40,
-                backgroundColor: "transparent",
-                resizeMode: "contain",
-              }}
-            />
-          </View>
         </View>
       </View>
       <BottomContainer />
@@ -128,7 +90,6 @@ export function BottomContainer() {
             <Image
               source={require("../../assets/images/location.png")}
               style={{
-                position: "relative",
                 width: 40,
                 height: 40,
                 backgroundColor: "transparent",
@@ -157,19 +118,21 @@ export function BottomContainer() {
           </View>
         </View>
 
-        <Link href="./deivery" className="w-full py-4  bg-black">
-          <Text
-            className="text-white"
-            style={{
-              fontFamily: "Nunito_700Bold",
-              color: "white",
-              fontSize: 26,
-              textAlign: "center",
-            }}
-          >
-            Confirm and add details
-          </Text>
-        </Link>
+        <TouchableOpacity>
+          <Link href="./AddressDetails" className="w-full py-4  bg-black">
+            <Text
+              className="text-white"
+              style={{
+                fontFamily: "Nunito_700Bold",
+                color: "white",
+                fontSize: 26,
+                textAlign: "center",
+              }}
+            >
+              Confirm and add details
+            </Text>
+          </Link>
+        </TouchableOpacity>
       </View>
     </View>
   );

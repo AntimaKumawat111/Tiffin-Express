@@ -1,7 +1,7 @@
 import ChangeAddressScreen from "@/component/ChangeAddressScreen";
-import { ScrollView, StyleSheet, Text } from "react-native";
+import { ScrollView, StyleSheet } from "react-native";
 
-export default function Delivery() {
+export default function ChangeAddress() {
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
       <ChangeAddressScreen />

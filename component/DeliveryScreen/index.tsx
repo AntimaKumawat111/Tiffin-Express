@@ -181,7 +181,6 @@ export function WorkContainer({ address }: { address: { address: string } }) {
           style={{
             fontFamily: "Nunito_600SemiBold_Italic",
             fontSize: 16,
-            // color: isClicked ? "white" : "#929AAB", // Change text color
             // color:'black'
           }}
           numberOfLines={1}
@@ -195,25 +194,15 @@ export function WorkContainer({ address }: { address: { address: string } }) {
 }
 
 export function AddNewAddreses() {
-  const [isClicked, setIsClicked] = useState(false);
-
   return (
     <Link
       href="/changeAddress"
-      className={`w-full p-3  rounded-md flex flex-row flex-1 items-center justify-center
-        ${
-          isClicked
-            ? "bg-white border-gray-300"
-            : "bg-[#1c9ab31a]  border-[#00B4D8] "
-        }
-        
-        `}
-      onPress={() => setIsClicked(!isClicked)}
+      className="bg-[#1c9ab31a] border-[#00B4D8] p-4  border rounded-md "
     >
-      <View>
+      <View className="w-full flex flex-row items-center gap-2">
         <MaterialIcons name="add-location" size={30} color="#00B4D8" />
+        <Text style={styles.addNewAddress}>Add new address</Text>
       </View>
-      <Text style={styles.addNewAddress}>Add new address</Text>
     </Link>
   );
 }
@@ -233,15 +222,13 @@ const styles = StyleSheet.create({
     fontFamily: "Nunito_700Bold",
     fontSize: 22,
     color: "white",
-    paddingVertical: 0, // Remove unwanted padding
-    includeFontPadding: false, // Fix height inconsistency
-    textAlignVertical: "center", // Align text properly
+    paddingVertical: 0,
+    includeFontPadding: false, 
+    textAlignVertical: "center", 
     paddingLeft: 5,
     flex: 1,
-    // borderWidth:1,
     maxWidth: 180,
     minWidth: 180,
-    // borderColor:'ba'
   },
 
   changebtn: {

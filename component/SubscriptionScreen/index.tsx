@@ -69,7 +69,7 @@ export default function SubscriptionScreen() {
           <Ionicons name="chevron-back-outline" size={30} color="black" />
         </TouchableOpacity>
 
-        <Text style={styles.title}> Subscription</Text>
+        <Text style={styles.title}>Subscription</Text>
         <Text style={styles.desc}>
           Indulge in a month-long culinary adventure! Customize meals, set
           start-end dates, and enjoy delightful, hassle-free monthly ordering at
@@ -206,7 +206,7 @@ export const tailwindStyles = {
   orderBtn: "bg-black mx-5 py-4 flex flex-row item-center justify-between px-5",
   OrderNowText: "text-white text-xl ",
   modalBtnPrice: "text-white text-xl",
-  modalBtn: "bg-black py-4 mt-6 flex flex-row item-center justify-between px-5",
+  modalBtn: "bg-black py-4 mt-6 px-5",
 };
 
 export function BottomContainer({ totalValue }: any) {
@@ -272,7 +272,7 @@ export function BottomContainer({ totalValue }: any) {
       {isVisible && (
         <Animated.View
           style={{ transform: [{ translateY }] }}
-          className="absolute bottom-0  w-full bg-white h-80 p-5 rounded-t-2xl shadow-lg"
+          className="absolute -bottom-6  w-full bg-white h-80 z-30 p-5 rounded-t-2xl shadow-lg"
           {...panResponder.panHandlers} // Attach gesture handler
         >
           {/* Draggable Bar for Swipe Down */}
@@ -306,18 +306,20 @@ export function BottomContainer({ totalValue }: any) {
           ))}
 
           <Link href="./delivery" className={tailwindStyles.modalBtn}>
-            <Text
-              className={tailwindStyles.OrderNowText}
-              style={{ fontFamily: "Nunito_700Bold" }}
-            >
-              Order Now
-            </Text>
-            <Text
-              className={tailwindStyles.modalBtnPrice}
-              style={{ fontFamily: "Nunito_700Bold" }}
-            >
-              ₹ {orderPrice.price}
-            </Text>
+            <View className="w-full flex flex-row  items-center justify-between">
+              <Text
+                className={tailwindStyles.OrderNowText}
+                style={{ fontFamily: "Nunito_700Bold" }}
+              >
+                Order Now
+              </Text>
+              <Text
+                className={tailwindStyles.modalBtnPrice}
+                style={{ fontFamily: "Nunito_700Bold" }}
+              >
+                ₹ {orderPrice.price}
+              </Text>
+            </View>
           </Link>
         </Animated.View>
       )}
