@@ -1,5 +1,5 @@
 {
-  "name": "tiffin-express-design",
+  "name": "tiffin-express",
   "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {
