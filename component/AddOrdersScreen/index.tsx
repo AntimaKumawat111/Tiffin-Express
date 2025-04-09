@@ -86,7 +86,7 @@ export default function AddOrdersScreen() {
   };
 
   return (
-    <View className="px-5 flex-1">
+    <View className="px-5 flex-1" style={{ paddingTop:50,}}>
       {/* Background Shape */}
       <View
         style={{

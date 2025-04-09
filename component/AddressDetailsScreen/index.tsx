@@ -35,7 +35,7 @@ export default function AddressDetailsScreen() {
   }
 
   return (
-    <View className=" flex-1 mx-5 pt-10">
+    <View className=" flex-1 mx-5 pt-10" style={{ paddingTop:50,}}>
       <View
         style={{
           position: "absolute",

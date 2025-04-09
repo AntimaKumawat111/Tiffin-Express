@@ -8,7 +8,12 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { FontAwesome5, Ionicons, MaterialIcons } from "@expo/vector-icons";
+import {
+  FontAwesome,
+  FontAwesome5,
+  Ionicons,
+  MaterialIcons,
+} from "@expo/vector-icons";
 import { Link, router } from "expo-router";
 import { useFonts, YesevaOne_400Regular } from "@expo-google-fonts/yeseva-one";
 import { Nunito_700Bold, Nunito_500Medium } from "@expo-google-fonts/nunito";
@@ -76,7 +81,12 @@ function HomeScreen() {
         style={styles.plusIconContainer}
         onPress={() => setIsModalVisible(true)}
       >
-        <FontAwesome5 name="plus" size={35} color="black" />
+        {/* <FontAwesome5 name="plus" size={35} color="black" /> */}
+        <FontAwesome
+          name={isModalVisible ? "close" : "plus"}
+          size={35}
+          color="black"
+        />
       </TouchableOpacity>
       {/* modal */}
       <Modal
@@ -148,13 +158,12 @@ export function Card({ url, title, description, price }: CardDataProps) {
 
 const styles = StyleSheet.create({
   main: {
-    paddingTop:15,
+    paddingTop: 15,
     flexGrow: 1,
     minHeight: "100%",
   },
 
-  scrollViewContent: {
-  },
+  scrollViewContent: {},
 
   HomePage: {
     flexDirection: "row",
@@ -228,7 +237,7 @@ const styles = StyleSheet.create({
     fontSize: 26,
     fontFamily: "Nunito_700Bold",
   },
-  
+
   plusIconContainer: {
     elevation: 7,
     padding: 10,
@@ -242,7 +251,7 @@ const styles = StyleSheet.create({
     bottom: 100,
     position: "sticky",
   },
-  
+
   /* Modal Styles */
   modalBackground: {
     flex: 1,

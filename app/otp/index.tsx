@@ -11,8 +11,9 @@ export default function Otp() {
 
 const styles = StyleSheet.create({
   scrollContainer: {
-    flexGrow: 1,
-    paddingHorizontal:20,
-    paddingTop:20
+    flex: 1,
+   
+    paddingHorizontal: 20,
+    paddingTop: 30,
   },
 });

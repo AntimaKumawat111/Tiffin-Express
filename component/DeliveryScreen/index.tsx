@@ -30,7 +30,7 @@ export default function DeliveryScreen() {
   };
 
   return (
-    <View className="flex-1 flex justify-between pt-5">
+    <View className="flex-1 flex justify-between" style={{ paddingTop:50,}}>
       {/* Background Shape */}
 
       <View

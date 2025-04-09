@@ -19,7 +19,7 @@ export default function OrdersScreen() {
   }
 
   return (
-    <View className=" px-5 pt-10">
+    <View className="px-5" style={{ paddingTop: 50 }}>
       {/* Background Shape */}
       <View
         style={{

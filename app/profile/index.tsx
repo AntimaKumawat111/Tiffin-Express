@@ -12,6 +12,6 @@ export default function Profile() {
 const styles = StyleSheet.create({
   scrollContainer: {
     flexGrow: 1,
-    paddingTop: 15,
+    // paddingTop: 15,
   },
 });

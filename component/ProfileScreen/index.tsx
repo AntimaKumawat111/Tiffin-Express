@@ -99,7 +99,7 @@ export default function ProfileScreen() {
         Keyboard.dismiss();
       }}
     >
-      <View className="flex-1">
+      <View className="flex-1" style={{ paddingTop:50,}}>
         <View className="mx-6 flex-1">
           {/* Header with Back and Edit Button */}
           <View className="flex flex-row justify-between mb-4">

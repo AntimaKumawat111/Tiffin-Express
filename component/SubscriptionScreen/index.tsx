@@ -48,7 +48,7 @@ export default function SubscriptionScreen() {
   }
 
   return (
-    <View>
+    <View style={{ paddingTop:30,}}>
       <View
         style={{
           position: "absolute",

@@ -47,7 +47,7 @@ export default function NotificationScreen() {
   }
 
   return (
-    <View className="flex-1 px-5 pt-10">
+    <View className="flex-1 px-5" style={{ paddingTop: 50 }}>
       <View
         style={{
           position: "absolute",

@@ -26,7 +26,7 @@ export default function ChangeAddressScreen() {
       <View className="">
         <View
           className="relative w-full flex-1"
-          style={{ height: screenHeight * 0.64 }} // heigh is 60% of the screen size
+          style={{ height: screenHeight * 0.67 }} // heigh is 60% of the screen size
         >
           <Map />
         </View>
